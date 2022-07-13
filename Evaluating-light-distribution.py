@@ -110,7 +110,49 @@ cv2.imshow("sign_img",sign_img)
 cv2.waitKey(0)
 
 
-            
+# Evaluating light distribution
+
+# LDM(Px(f+k-1)) = M(Px(f-1))+[(M(Px(l+1)-M(Px(f-1)))/m]k
+
+
+for i in range(len(contours)):
+    cnt = contours[i]
+    
+    left    = tuple(cnt[cnt[:,:,0].argmin()][0])
+    right   = tuple(cnt[cnt[:,:,0].argmax()][0])
+    top     = tuple(cnt[cnt[:,:,1].argmin()][0])
+    bottom  = tuple(cnt[cnt[:,:,1].argmax()][0])
+
+    print(left,right,top,bottom)
+
+    pfy = top[1]
+    pfx = left[0]
+    ply = bottom[1]
+    plx = right[0]
+    
+    m = pfx-ply
+    print(i+1,':','x(pfx),y(pfy),x+w(plx),y+h(ply)' , pfx, pfy, plx, ply)
+    
+    # ``````````````````````````````````````````````````````````````````````````````````````````````
+    
+    for numx in range(plx-pfx):
+        for numy in range(ply-pfy):
+            ax = numx + pfx
+            k= numy + 1
+            f1=pfy+k-1
+            f2=pfy-1
+            f3=ply-1
+            f4=pfy-1
+            eq1=LDM_img[f3][ax] - LDM_img[f4][ax]
+            eq2= eq1 / m
+            eq = eq2 * k
+            LDM_img[f1][ax] = LDM_img[f2][ax]
+            resLDI = LDM_img[f1][ax]
+            result = resLDI + eq
+    # ``````````````````````````````````````````````````````````````````````````````````````````````
+   
+cv2.imshow('LDI',LDM_img)
+cv2.waitKey(0)
 
 
 
