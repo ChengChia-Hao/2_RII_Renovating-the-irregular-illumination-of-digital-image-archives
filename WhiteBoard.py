@@ -1,8 +1,11 @@
-import cv2
-img = cv2.imread('sc.png')
+aAverage = []
+for i in range(10):
+    aAverage.append(2)
+print (aAverage)
 
-img = 255-img 
 
-cv2.imshow('SC', img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+asum = sum(aAverage)
+alen = len(aAverage)
+print (asum)
+print (alen)
