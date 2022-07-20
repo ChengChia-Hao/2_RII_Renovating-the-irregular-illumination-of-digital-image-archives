@@ -6,13 +6,13 @@ import imutils
 
 import sys
 
-# imageName = "2022lena.png"
-imageName = "ex1.png"
+imageName = "2022lena.png"
+# imageName = "AAAAA.png"
 # imageName = "AA.png"
-# imageName = "TMP.jpg"
+# imageName = "EL.jpg"
 # imageName = "TP.png"
 # imageName = "ELBT.png"
-# imageName = "TMP.jpg"
+# imageName = "LDI.png"
 
 
 image = cv2.imread(imageName, cv2.COLOR_BGR2GRAY)
@@ -47,10 +47,14 @@ kernel45 = np.array((
     [-1,  0,  1],
     [ 0,  1,  2]), dtype="float32")
 
+# kernel135 = np.array((
+#     [ 0,  1, 2],
+#     [-1,  0, 1],
+#     [-2, -1, 0]), dtype="float32")
 kernel135 = np.array((
-    [ 0,  1, 2],
-    [-1,  0, 1],
-    [-2, -1, 0]), dtype="float32")
+    [1, 0, -1],
+    [2, 0, -2],
+    [1, 0, -1]), dtype="float32")
 
 
 
@@ -76,6 +80,9 @@ result135 = cv2.filter2D(image, dst=-1, kernel=kernel135, ddepth=-1, anchor=(1, 
 # result090= cv2.addWeighted(abs0,0.5, abs90, 0.5, 0.5)
 # result45135= cv2.addWeighted(abs45, 0.5, abs135, 0.5, 0.5)
 # resultavg= cv2.addWeighted(result090, 0.5, result45135, 0.5, 0.5)
+
+
+
 
 
 result090= cv2.addWeighted(result0,0.5, result90, 0.5, 0.5)

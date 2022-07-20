@@ -7,7 +7,7 @@ import sys
 
 
 imageName = "2022lena-1.png"
-# imageName = "lena.png"
+# imageName = "LDI.png"
 # imageName = "simple1.png"
 # imageName = "over.jpg"
 

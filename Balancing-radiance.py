@@ -7,10 +7,10 @@ import sys
 
 
 # imageName = "2022lena-1.png"
-# imageName = "2022lena.png"
-# imageName = "lena.png"
+imageName = "2022lena.png"
+# imageName = "LDI.png"
 # imageName = "simple1.png"
-imageName = "under.png"
+# imageName = "under.png"
 
 image = cv2.imread(imageName, cv2.IMREAD_COLOR)
 image_gray = cv2.imread(imageName, cv2.COLOR_BGR2GRAY)
