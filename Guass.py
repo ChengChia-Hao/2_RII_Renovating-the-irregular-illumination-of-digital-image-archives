@@ -15,7 +15,7 @@
 # -*- coding: utf-8 -*-
 """
 Creat 3*3 Gassian Kernel
-"""git
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 

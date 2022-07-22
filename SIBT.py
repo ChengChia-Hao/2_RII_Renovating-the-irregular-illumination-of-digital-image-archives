@@ -6,7 +6,7 @@ import imutils
 
 import sys
 
-imageName = "2022lena.png"
+imageName = "ex.png"
 # imageName = "AAAAA.png"
 # imageName = "AA.png"
 # imageName = "EL.jpg"

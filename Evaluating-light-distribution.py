@@ -6,8 +6,8 @@ import imutils
 import sys
 
 
-imageName = "2022lena-1.png"
-# imageName = "LDI.png"
+# imageName = "2022lena-1.png"
+imageName = "UNDER.png"
 # imageName = "simple1.png"
 # imageName = "over.jpg"
 
@@ -50,18 +50,25 @@ kernelGL5 = np.array((
     [  2, -4,  2],
     [ -1,  2, -1]), dtype="float32")
 
+kernelGL6 = np.array((
+    [ 1,  2, 1],
+    [ 2, 4,  2],
+    [ 1,  2, 1]), dtype="float32")
 
-resultGL1 = cv2.filter2D(image, dst=-1, kernel=kernelGL1, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_DEFAULT)
-resultGL2 = cv2.filter2D(image, dst=-1, kernel=kernelGL2, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_DEFAULT)
-resultGL3 = cv2.filter2D(image, dst=-1, kernel=kernelGL3, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_DEFAULT)
-resultGL4 = cv2.filter2D(image, dst=-1, kernel=kernelGL4, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_DEFAULT)
-resultGL5 = cv2.filter2D(image, dst=-1, kernel=kernelGL5, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_DEFAULT)
+
+resultGL1 = cv2.filter2D(image, dst=-1, kernel=kernelGL1, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)
+resultGL2 = cv2.filter2D(image, dst=-1, kernel=kernelGL2, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)
+resultGL3 = cv2.filter2D(image, dst=-1, kernel=kernelGL3, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)
+resultGL4 = cv2.filter2D(image, dst=-1, kernel=kernelGL4, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)
+resultGL5 = cv2.filter2D(image, dst=-1, kernel=kernelGL5, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)
+resultGL6 = cv2.filter2D(image, dst=-1, kernel=kernelGL6, ddepth=-1, anchor=(-1, -1), delta=0, borderType=cv2.BORDER_REPLICATE)/16
 
 absGL1 = cv2.convertScaleAbs(resultGL1)
 absGL2 = cv2.convertScaleAbs(resultGL2)
 absGL3 = cv2.convertScaleAbs(resultGL3)
 absGL4 = cv2.convertScaleAbs(resultGL4)
 absGL5 = cv2.convertScaleAbs(resultGL5)
+absGL6 = cv2.convertScaleAbs(resultGL6)
 
 result1= cv2.addWeighted(absGL1,0.5, absGL2, 0.5, 0.5)
 resulttmp= cv2.addWeighted(absGL4, 0.5, absGL5, 0.5, 0.5)
@@ -73,11 +80,12 @@ ret, bm_img= cv2.threshold(resultavg, 25, 255, cv2.THRESH_BINARY)
 cv2.imshow("Original", image)
 cv2.waitKey(0)
 
-cv2.imshow("Filter 1G", resultGL1)
+cv2.imshow("Filter 1L", resultGL1)
 cv2.imshow("Filter 2L", resultGL2)
-cv2.imshow("Filter 3G", resultGL3)
+cv2.imshow("Filter 3L", resultGL3)
 cv2.imshow("Filter 4L", resultGL4)
 cv2.imshow("Filter 5G", resultGL5)
+cv2.imshow("Filter 6G", resultGL6)
 cv2.waitKey(0)
 
 cv2.imshow('Result avg',resultavg)

@@ -6,9 +6,9 @@ import imutils
 import sys
 
 
-# imageName = "2022lena-1.png"
-imageName = "2022lena.png"
-# imageName = "LDI.png"
+imageName = "HI.png"
+# imageName = "2022lena.png"
+# imageName = "EL.jpg"
 # imageName = "simple1.png"
 # imageName = "under.png"
 
@@ -76,12 +76,12 @@ ret, bm_img= cv2.threshold(resultavg, 25, 255, cv2.THRESH_BINARY)
 cv2.imshow("Original", image)
 cv2.waitKey(0)
 
-# cv2.imshow("Filter 1", resultGL1)
-# cv2.imshow("Filter 2", resultGL2)
-# cv2.imshow("Filter 3", resultGL3)
-# cv2.imshow("Filter 4", resultGL4)
-# cv2.imshow("Filter 5", resultGL5)
-# cv2.waitKey(0)
+cv2.imshow("Filter 1", resultGL1)
+cv2.imshow("Filter 2", resultGL2)
+cv2.imshow("Filter 3", resultGL3)
+cv2.imshow("Filter 4", resultGL4)
+cv2.imshow("Filter 5", resultGL5)
+cv2.waitKey(0)
 
 cv2.imshow('Result avg',resultavg)
 cv2.waitKey(0)
