@@ -6,7 +6,8 @@ import imutils
 
 import sys
 
-input_img = cv2.imread("under.png")
+input_img = cv2.imread("simple1.png")
+# input_img = cv2.imread("TP1.png")
 # input_img = cv2.imread("2022lena.png")
 
 print(input_img.shape)
